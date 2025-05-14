@@ -1,0 +1,26 @@
+/* src/styles/banner.css */
+.banner {
+  background-image: url("https://wallpapers.com/images/hd/4k-flowers-background-dnzlgsf4xgb3fix4.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.banner-text {
+  text-align: center;
+  max-width: 80%;
+}
+
+.banner h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 1.2rem;
+}

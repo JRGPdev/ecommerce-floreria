@@ -1,3 +1,5 @@
+import Banner from "../components/Banner";
+import ProductList from "../components/ProducList";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -6,8 +8,8 @@ export default function HomePage() {
     <>
       <Header />
       <main>
-        <h2>Bienvenido a nuestra tienda</h2>
-        <p>Encuentra las flores más hermosas para cada ocasión.</p>
+        <Banner />
+        <ProductList />
       </main>
       <Footer />
     </>

@@ -4,7 +4,7 @@ import "../styles/footer.css";
 export default function Footer() {
   return (
     <footer className="footer">
-      <p>&copy; 2025 Tienda de Flores. Todos los derechos reservados.</p>
+      <p>&copy; 2025 Florería Bella. Todos los derechos reservados.</p>
     </footer>
   );
 }
