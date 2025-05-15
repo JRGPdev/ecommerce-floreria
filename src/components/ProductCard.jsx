@@ -1,12 +1,19 @@
 // src/components/ProductCard.jsx
-import "../styles/product.css";
+import Link from "next/link";
+import "../styles/productCard.css";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ producto }) {
   return (
-    <div className="product-card">
-      <img src={product.image} alt={product.name} />
-      <h3>{product.name}</h3>
-      <p className="price">${product.price}</p>
-    </div>
+    <Link href={`/producto/${producto.id}`} className="card-link">
+      <div className="product-card">
+        <div className="card-image">
+          <img src={producto.imagen} alt={producto.nombre} />
+        </div>
+        <div className="card-content">
+          <h3>{producto.nombre}</h3>
+          <p>${producto.precio.toFixed(2)}</p>
+        </div>
+      </div>
+    </Link>
   );
 }
