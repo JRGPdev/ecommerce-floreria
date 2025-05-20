@@ -1,31 +1,27 @@
-// app/producto/[id]/page.jsx
-"use client";
-import { useEffect, useState } from "react";
+// src/app/producto/[id]/page.js
+import { getProductsGraphQL } from "@/services/bigcommerceAPI";
 import ProductDetail from "@/components/ProductDetail";
 
-export default function ProductoPage({ params }) {
-  const [producto, setProducto] = useState(null);
-  const [loading, setLoading] = useState(true);
+export default async function ProductDetailPage({ params }) {
+  const { id } = params;
 
-  useEffect(() => {
-    const fetchProducto = async () => {
-      try {
-        const response = await fetch("http://localhost:4000/odbc-data/");
-        const data = await response.json();
-        const prod = data.find((p) => p.Id === Number(params.id));
-        setProducto(prod);
-      } catch (error) {
-        console.error("Error al cargar el producto:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // Obtener todos los productos (puedes paginar más adelante)
+  const data = await getProductsGraphQL();
+  const productos = data.data.site.products.edges.map(({ node }) => ({
+    id: node.entityId,
+    nombre: node.name,
+    sku: node.sku,
+    descripcion: node.plainTextDescription,
+    precio: node.prices.basePrice?.value,
+    imagen: node.images.edges[0]?.node.urlOriginal || null,
+  }));
 
-    fetchProducto();
-  }, [params.id]);
+  // Buscar el producto por ID
+  const producto = productos.find((p) => p.id === Number(id));
 
-  if (loading) return <div>Cargando producto...</div>;
-  if (!producto) return <div>Producto no encontrado</div>;
+  if (!producto) {
+    return <p>Producto no encontrado</p>;
+  }
 
   return <ProductDetail producto={producto} />;
 }
