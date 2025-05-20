@@ -1,6 +1,6 @@
 const query = `query paginateProducts {
     site {
-      products(first: 30) {
+      products(first: 50) {
         pageInfo {
           startCursor
           endCursor
