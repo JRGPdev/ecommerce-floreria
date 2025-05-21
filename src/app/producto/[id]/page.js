@@ -11,6 +11,7 @@ export default async function ProductDetailPage({ params }) {
     id: node.entityId,
     nombre: node.name,
     sku: node.sku,
+    itemId: node.sku.split("-").slice(-1)[0], // tomar parte después del guion
     descripcion: node.plainTextDescription,
     precio: node.prices.basePrice?.value,
     imagen: node.images.edges[0]?.node.urlOriginal || null,

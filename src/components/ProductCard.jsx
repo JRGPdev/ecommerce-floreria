@@ -19,6 +19,7 @@ export default function ProductCard({ producto }) {
           <h3>{producto.nombre}</h3>
           <p>${Number(producto.precio).toFixed(2)}</p>
           <p>{producto.sku}</p>
+          <p>{producto.itemId}</p>
         </div>
       </div>
     </Link>
